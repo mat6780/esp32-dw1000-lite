@@ -14,9 +14,9 @@ functionality. See the original project at https://github.com/Richardn2002/ardui
 for further caveats and restrictions.
 
 The test application was used as a quick proof-of-concept for determining distance of a remote 
-(moving) "Responder"/tag from a base of two "Initiators"/anchors at a fixed distance e.g. 50cm 
-and using the difference of the two measured distances to estimate direction (thus providing an
-answer to question: "Is tag more to the left or to the right and approx. by how much?):
+(moving) "Responder"/tag from a base of two "Initiators"/anchors at a fixed base distance of 
+e.g. 50cm and using the difference of the two measured distances to estimate direction (thus 
+providing an answer to question: "Is tag more to the left or to the right and approx. by how much?):
 
 ```
 
