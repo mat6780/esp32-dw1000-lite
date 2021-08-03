@@ -48,7 +48,7 @@ the measured distance with an ESP-NOW reply frame, enabling the master to calcul
 
 DS-TWR-Initiator-Master and DS-TWR-Initiator-Slave duplicate the same hardware (ESP32 and DWS1000 shield) and the
 same - simple - code. The DS-TWR-Initiator-Slave is synchronized to the DS-TWR-Initiator-Master (so there is always
-only _one_ anchor performing ranging) using above basic frame exchange vie ESP-NOW (this could of course be achieved 
+only _one_ anchor performing ranging) using above basic frame exchange via ESP-NOW (this could of course be achieved 
 by other means e.g. using UWB itself -- but not with this library). 
 
 Note that the Responder/Tag does no frame filterung and is ignorant of the specific anchor it is dealing with.
