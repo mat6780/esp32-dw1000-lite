@@ -5,9 +5,9 @@
  *  Mods: Separation in .h/.cpp, mods for ESP32, second anchor: matdru
  */
 /*
- *******
+ *********
  * matdru:
- ******* 
+ ********* 
  * Connections:
 
     ESP32                        DWM1000
@@ -24,7 +24,7 @@
     Not used:
     IN: interrupt D0 pin GPIO27-------OUT: IRQ  (interrupt request out: CON1 Pin 1 .. equiv. to Arduino CLK0 ..1st from bottom upwards)
  *
- ******
+ *********
  */
 
 #include <DW1000.h>

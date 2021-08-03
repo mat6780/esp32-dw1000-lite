@@ -3,7 +3,7 @@
  *  Date: 2021-07-31
  *  Original Author: https://github.com/Richardn2002
  *  Separation in .h/.cpp and mods for ESP32: matdru
- *  For documentation, see DS-TWR-Initiator-Master.cpp and 
+ *  For some documentation, see DS-TWR-Initiator-Master.cpp and 
  *  original project at https://github.com/Richardn2002/arduino-dw1000-lite
  */
 

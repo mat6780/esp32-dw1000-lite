@@ -2,11 +2,13 @@
  *  File: DS-TWR-Responder.cpp
  *  Date: 2021-07-31
  *  Original Author: https://github.com/Richardn2002
- *  Mods: Separation in .h/.cpp, mods for ESP32: mat6780@gmail.com (DRU)
+ *  Mods: Separation in .h/.cpp, mods for ESP32: mat6780@gmail.com (matdru)
+ *  For some documentation, see DS-TWR-Initiator-Master.cpp and 
+ *  original project at https://github.com/Richardn2002/arduino-dw1000-lite
  */
 /*
  *******
- * DRU:
+ * matdru:
  ******* 
  * Connections:
 
@@ -40,11 +42,11 @@ void setup() {
     dwInit(A_CSN, A_RST);
     disconnectTimer = millis();
  
-    // DRU: test SPI connection
+    // matdru: test SPI connection
     char devString[64];
     dwGetPrintableDeviceIdentifier(A_CSN, devString);
     Serial.println(devString);
-    // DRU
+    // matdru
 
 }
 
@@ -55,16 +57,16 @@ uint64_t DelayedTx() {
     dwForceTRxOff(A_CSN);
     dwClearTransmitStatus(A_CSN);
 
-    // DRU: This sets delay to approxx. 1ms (less did not work...)
+    // matdru: This sets delay to approxx. 1ms (less did not work...)
     uint64_t sendTime = dwGetTimestamp(A_CSN) >> 25;
     sendTime += 2;
     sendTime <<= 25;
 
     dwSetDelayedTime(A_CSN, sendTime);
 
-    // DRU: add antenna delay
+    // matdru: add antenna delay
     sendTime += TX_ANT_DLY;
-    // DRU
+    // matdru
 
     byte msg[10];
     uint64_t replyTime;
