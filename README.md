@@ -8,14 +8,15 @@ Description
 
 This is a simple application of the  "DW1000lite" library and its example programs for
 ranging as contributed at https://github.com/Richardn2002/arduino-dw1000-lite, but adapted 
-to the ESP32 running with Arduino-Platform. As stated by the original author, this is not a 
-full-fledged solution, but a way to get started with DW1000 very fast and test basic ranging 
-functionality. See the original project at https://github.com/Richardn2002/arduino-dw1000-lite 
-for further caveats and restrictions.
+to the ESP32 running with Arduino-Platform. Another minor code change relates to a more
+formalized antenna calibration (the original code used a "magic" offset value).
+As stated by the original author, this is not a full-fledged solution, but a way to get 
+started with DW1000 very fast and test basic ranging functionality. See the original project 
+at https://github.com/Richardn2002/arduino-dw1000-lite for further caveats and restrictions.
 
-The test application was used as a quick proof-of-concept for determining distance of a remote 
+The test application was used as a quick proof-of-concept for determining both distance of a remote 
 (moving) "Responder"/tag from a base of two "Initiators"/anchors at a fixed base distance of 
-e.g. 50cm and using the difference of the two measured distances to estimate direction (thus 
+e.g. 50cm as well as using the difference of the two measured distances to estimate direction (thus 
 providing an answer to question: "Is tag more to the left or to the right and approx. by how much?):
 
 ```
@@ -37,6 +38,10 @@ providing an answer to question: "Is tag more to the left or to the right and ap
                         (Espressif proprietary @2.4 GHz)     
 ```                                                       
 
+With this setup and after antenna calibration (= systematically measuring range using different calibration 
+values), the advertised *ranging precision around +/- 10cm* could indeed be achieved within the lab room limits
+of 50 to 500cm.
+
 Function
 ---------
 
@@ -46,9 +51,14 @@ frame to the slave to indicate that it's its turn. When the slave has finished i
 the measured distance with an ESP-NOW reply frame, enabling the master to calculate the delta 
 (difference of distance) and then kicking off the next train of measurements.
 
-DS-TWR-Initiator-Master and DS-TWR-Initiator-Slave duplicate the same hardware (ESP32 and DWS1000 shield) and the
-same - simple - code. The DS-TWR-Initiator-Slave is synchronized to the DS-TWR-Initiator-Master (so there is always
-only _one_ anchor performing ranging) using above basic frame exchange via ESP-NOW (this could of course be achieved 
+DS-TWR-Initiator-Master, DS-TWR-Initiator-Slave and DS-TWR-Responder utilize the same hardware - ESP32 
+and DWS1000 shield, see below (and share most of the - simple - code):
+
+![Test Setup](Images/Test-Setup.jpg)
+
+The DS-TWR-Initiator-Slave is synchronized to the DS-TWR-Initiator-Master (so there is always
+only _one_ anchor performing ranging) using a simple frame exchange via ESP-NOW, as this is readily
+available on ESP32 (this could of course be achieved 
 by other means e.g. using UWB itself -- but not with this library). 
 
 Note that the Responder/Tag does no frame filterung and is ignorant of the specific anchor it is dealing with.
@@ -74,7 +84,7 @@ Pin Connections
 
 License
 -------
-This project is under MIT license, as the original project by Richardn (thanks Richardn!).
+This project is under MIT license, as was the original project by Richardn (thanks Richardn!).
 
 Copyright 2021 matdru
 
