@@ -39,7 +39,7 @@ providing an answer to question: "Is tag more to the left or to the right and ap
 ```                                                       
 
 With this setup and after antenna calibration (= systematically measuring range using different calibration 
-values), the advertised *ranging precision around +/- 10cm* could indeed be achieved within the lab room limits
+values), the advertised **ranging precision around +/- 10cm** could indeed be achieved within the lab room limits
 of 50 to 500cm.
 
 Function
